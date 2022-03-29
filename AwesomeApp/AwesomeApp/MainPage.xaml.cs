@@ -46,7 +46,7 @@ namespace AwesomeApp {
         }
 
         private async void Button_Clicked_1(object sender, EventArgs e) {
-            await DisplayAlert("Hey, Paha!", "( ° ͜ʖ͡°)╭∩╮", "Ok...");
+            await DisplayAlert("Hey, Paha!", "( ° ͜ʖ͡°)╭∩╮\nPal'chik", "Ok...");
         }
     }
 }
