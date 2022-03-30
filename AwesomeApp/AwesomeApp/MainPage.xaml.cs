@@ -56,6 +56,13 @@ namespace AwesomeApp {
             }
         }
 
+        private void rotation_ValueChanged(object sender, ValueChangedEventArgs e) {
+            if (selectedBox != null) {
+                selectedBox.Rotation = (sender as Slider).Value;
+                selectedBoxObj.rot = (sender as Slider).Value;
+            }
+        }
+
         private async void Button_Clicked(object sender, EventArgs e) {
             LAR.Value = 0;
             UAD.Value = 0;
@@ -117,11 +124,6 @@ namespace AwesomeApp {
 
             Navigation.PushAsync(boxesPage);
 
-        }
-
-        private void rotation_ValueChanged(object sender, ValueChangedEventArgs e) {
-            selectedBox.Rotation = (sender as Slider).Value;
-            selectedBoxObj.rot = (sender as Slider).Value;
         }
 
         private void boxChosen(object sender, EventArgs e) {
