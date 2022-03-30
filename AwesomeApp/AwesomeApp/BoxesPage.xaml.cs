@@ -24,6 +24,7 @@ namespace AwesomeApp {
             box.xTranslate = 0.0;
             box.yTranslate = 0.0;
             box.rot = 0.0;
+            box.scale = 1.0;
         }
 
         private void removeBox(object sender, EventArgs e) {

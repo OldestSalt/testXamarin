@@ -26,6 +26,20 @@ namespace AwesomeApp {
             InitializeComponent();
             colors.ItemsSource = pickerColors.Keys.ToList();
             colors.SelectedIndex = 0;
+
+
+            var pinchEvent = new PinchGestureRecognizer();
+
+            pinchEvent.PinchUpdated += (s, e) => {
+                if (selectedBox != null) {
+                    if (selectedBox.Scale > 0.1 || e.Scale > 0) {
+                        selectedBox.Scale += e.Scale - 1;
+                        selectedBoxObj.scale = selectedBox.Scale;
+                    }
+                }
+            };
+            field.GestureRecognizers.Add(pinchEvent);
+
         }
 
         private void userText_TextChanged(object sender, TextChangedEventArgs e) {
@@ -81,7 +95,8 @@ namespace AwesomeApp {
                         ClassId = b.id.ToString(),
                         TranslationX = b.xTranslate,
                         TranslationY = b.yTranslate,
-                        Rotation = b.rot
+                        Rotation = b.rot,
+                        Scale = b.scale
                     };
                     frm.Content = new Label() {
                         Text = b.text,
@@ -93,19 +108,22 @@ namespace AwesomeApp {
 
                     var ev = new TapGestureRecognizer();
                     ev.Tapped += (aboba, abeba) => {
-                        if (selectedBox != null) {
-                            selectedBox.BorderColor = Color.Transparent;
-                        }
-                        selectedBox = frm;
-                        selectedBoxObj = Boxes.Where(i => i.id == Int32.Parse(frm.ClassId)).FirstOrDefault();
-                        frm.BorderColor = Color.Red;
+                        if (selectedBox != frm) {
+                            if (selectedBox != null) {
+                                selectedBox.BorderColor = Color.Transparent;
+                            }
+                            selectedBox = frm;
+                            selectedBoxObj = Boxes.Where(i => i.id == Int32.Parse(frm.ClassId)).FirstOrDefault();
+                            frm.BorderColor = Color.Red;
 
-                        colors.SelectedItem = pickerColors.Where(i => i.Value == frm.BackgroundColor).FirstOrDefault().Key;
-                        entry.Text = (frm.Content as Label).Text;
-                        LAR.Value = frm.TranslationX;
-                        UAD.Value = frm.TranslationY;
-                        rotation.Value = frm.Rotation;
+                            colors.SelectedItem = pickerColors.Where(i => i.Value == frm.BackgroundColor).FirstOrDefault().Key;
+                            entry.Text = (frm.Content as Label).Text;
+                            LAR.Value = frm.TranslationX;
+                            UAD.Value = frm.TranslationY;
+                            rotation.Value = frm.Rotation;
+                        }
                     };
+
                     ev.NumberOfTapsRequired = 1;
                     frm.GestureRecognizers.Add(ev);
 
@@ -152,6 +170,10 @@ namespace AwesomeApp {
         public double rot {
             get; set;
         } = 0.0;
+
+        public double scale {
+            get; set;
+        } = 1.0;
 
         public int id {
             get;
