@@ -18,22 +18,26 @@
         </Grid.RowDefinitions>
         <Frame CornerRadius="15" BorderColor="Orange" BackgroundColor="#eee" Padding="10, 0" Grid.ColumnSpan="2" Grid.Row="0">
             <StackLayout VerticalOptions="CenterAndExpand">
-                <Entry x:Name="entry" Placeholder="Enter the text" TextChanged="userText_TextChanged" Text="Hello world!"/>
+                <Entry x:Name="entry" Placeholder="Enter the text" Text="Hello world!"/>
+                <!--TextChanged="userText_TextChanged"-->
+                <!--{Binding Source={x:Reference selectedBox}, Path=text, Mode=TwoWay}-->
                 <Picker Title="Choose a color" x:Name="colors" SelectedIndexChanged="colors_SelectedIndexChanged"/>
             </StackLayout>
         </Frame>
         <RelativeLayout x:Name="field" Grid.ColumnSpan="2" Grid.Row="1">
         </RelativeLayout>
         <StackLayout Grid.Row="2" Grid.Column="0">
-            <Stepper x:Name="LAR" Minimum="-100" Maximum="100" Increment="10" ValueChanged="StepperLeftAndRight_ValueChanged"/>
+            <Stepper x:Name="LAR" Minimum="-100" Maximum="100" Increment="10"/>
+            <!--ValueChanged="StepperLeftAndRight_ValueChanged"-->
             <Label Text="Left and right" TextColor="DarkOrange" FontSize="Large" HorizontalTextAlignment="Center"/>
         </StackLayout>
         <StackLayout Grid.Row="2" Grid.Column="1">
-            <Stepper x:Name="UAD" Minimum="-100" Maximum="100" Increment="10"  ValueChanged="StepperUpAndDown_ValueChanged"/>
+            <Stepper x:Name="UAD" Minimum="-100" Maximum="100" Increment="10"/> <!--ValueChanged="StepperUpAndDown_ValueChanged"-->
             <Label Text="Up and down" TextColor="DarkOrange" FontSize="Large" HorizontalTextAlignment="Center"/>
         </StackLayout>
         <StackLayout Grid.Row="3" Grid.ColumnSpan="2">
-            <Slider x:Name="rotation" Minimum="0" Maximum="360" ThumbColor="DarkOrange" MinimumTrackColor="Orange" MaximumTrackColor="Orange" ValueChanged="rotation_ValueChanged"/>
+            <Slider x:Name="rotation" Minimum="0" Maximum="360" ThumbColor="DarkOrange" MinimumTrackColor="Orange" MaximumTrackColor="Orange"/>
+            <!--ValueChanged="rotation_ValueChanged"-->
             <Label Text="Rotation" TextColor="DarkOrange" FontSize="Large" HorizontalTextAlignment="Center"/>
         </StackLayout>
         <!--<Button Grid.ColumnSpan="2" Grid.Row="4" CornerRadius="15" BackgroundColor="OrangeRed" Text="Reset position" TextColor="White" HorizontalOptions="FillAndExpand" FontSize="15" FontAttributes="Bold" Clicked="Button_Clicked"/>-->

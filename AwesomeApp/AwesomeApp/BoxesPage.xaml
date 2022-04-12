@@ -9,7 +9,7 @@
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>
                         <StackLayout Margin="5" Orientation="Horizontal">
-                            <Frame HeightRequest="20" WidthRequest="80" BackgroundColor="{Binding color}" BorderColor="Black"/>
+                            <Frame HeightRequest="20" WidthRequest="80" BackgroundColor="{Binding color, Mode=OneWay}" BorderColor="Black"/>
                             <Button Margin="5, 0" ClassId="{Binding id}" HorizontalOptions="EndAndExpand" CornerRadius="10" BackgroundColor="Orange" Text="Reset" TextColor="White" FontSize="20" FontAttributes="Bold" Clicked="resetBox"/>
                             <Button ClassId="{Binding id}" HorizontalOptions="EndAndExpand" CornerRadius="10" BackgroundColor="OrangeRed" Text="Remove" TextColor="White" FontSize="20" FontAttributes="Bold" Clicked="removeBox"/>
                         </StackLayout>

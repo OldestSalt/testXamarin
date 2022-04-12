@@ -9,6 +9,7 @@ namespace AwesomeApp
         public App()
         {
             InitializeComponent();
+            Current.UserAppTheme = OSAppTheme.Light;
 
             MainPage = new NavigationPage(new MainPage());
         }
